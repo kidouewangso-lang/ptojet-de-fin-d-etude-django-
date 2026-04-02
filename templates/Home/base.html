@@ -1,0 +1,392 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+   
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+      <title>Preskool - Dashboard</title>
+      <link rel="shortcut icon" href="{%static 'assets/img/favicon.png' %}">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap">
+      <link rel="stylesheet" href="{%static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{%static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+      <link rel="stylesheet" href="{%static 'assets/plugins/fontawesome/css/all.min.css' %}">
+      <link rel="stylesheet" href="{%static 'assets/css/style.css' %}">
+      <style id="premium-dark-mode">
+          /* Premium Dark Mode Override */
+          body, .main-wrapper, .page-wrapper {
+              background-color: #0B1120 !important;
+              color: #F3F4F6 !important;
+          }
+          .header, .sidebar, .sidebar-inner, .card, .loginbox, .login-right {
+              background-color: #111827 !important;
+              border-color: #1F2937 !important;
+              color: #F3F4F6 !important;
+          }
+          h1, h2, h3, h4, h5, h6, .card-title, .page-title, .feed-text1 a {
+              color: #FFFFFF !important;
+          }
+          .sidebar-menu ul li a {
+              color: #9CA3AF !important;
+              transition: all 0.3s ease;
+          }
+          .sidebar-menu ul li a:hover {
+              color: #60A5FA !important;
+              background-color: #1F2937 !important;
+              transform: translateX(4px);
+          }
+          .form-control {
+              background-color: #1F2937 !important;
+              border: 1px solid #374151 !important;
+              color: #F3F4F6 !important;
+          }
+          .form-control:focus {
+              background-color: #0B1120 !important;
+              border-color: #3B82F6 !important;
+              box-shadow: 0 0 10px rgba(59, 130, 246, 0.5) !important;
+          }
+          .table {
+              color: #E5E7EB !important;
+          }
+          .table thead th {
+              color: #F9FAFB !important;
+              border-bottom: 2px solid #374151 !important;
+          }
+          .table td {
+              border-top: 1px solid #1F2937 !important;
+          }
+          .btn-primary, .btn-info {
+              background-color: #2563EB !important;
+              border-color: #2563EB !important;
+              transition: all 0.3s ease;
+          }
+          .btn-primary:hover, .btn-info:hover {
+              background-color: #1D4ED8 !important;
+              border-color: #1D4ED8 !important;
+              transform: translateY(-2px);
+              box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+          }
+          input[readonly], input[disabled] {
+              background-color: #111827 !important;
+          }
+          .breadcrumb-item a {
+              color: #60A5FA !important;
+          }
+          .breadcrumb-item.active {
+              color: #9CA3AF !important;
+          }
+          .text-muted, .account-subtitle {
+              color: #9CA3AF !important;
+          }
+          .dropdown-menu {
+              background-color: #111827 !important;
+              border: 1px solid #374151 !important;
+          }
+          .dropdown-item {
+              color: #E5E7EB !important;
+          }
+          .dropdown-item:hover {
+              background-color: #1F2937 !important;
+          }
+          .card {
+              box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3) !important;
+              border: 1px solid #1F2937 !important;
+              border-radius: 12px !important;
+          }
+          .dash-widget1, .dash-widget2, .dash-widget3, .dash-widget4 {
+              background-color: #1F2937 !important;
+          }
+          /* Premium Widget Cards with Glassmorphism */
+          .bg-nine {
+              background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.3) 100%) !important;
+              border: 1px solid rgba(59, 130, 246, 0.3) !important;
+              box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2) !important;
+              backdrop-filter: blur(8px) !important;
+              transition: all 0.3s ease;
+          }
+          .bg-six {
+              background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(124, 58, 237, 0.3) 100%) !important;
+              border: 1px solid rgba(139, 92, 246, 0.3) !important;
+              box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2) !important;
+              backdrop-filter: blur(8px) !important;
+              transition: all 0.3s ease;
+          }
+          .bg-ten {
+              background: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(202, 138, 4, 0.3) 100%) !important;
+              border: 1px solid rgba(234, 179, 8, 0.3) !important;
+              box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2) !important;
+              backdrop-filter: blur(8px) !important;
+              transition: all 0.3s ease;
+          }
+          .bg-eleven {
+              background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.3) 100%) !important;
+              border: 1px solid rgba(16, 185, 129, 0.3) !important;
+              box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2) !important;
+              backdrop-filter: blur(8px) !important;
+              transition: all 0.3s ease;
+          }
+          .card.bg-nine:hover, .card.bg-six:hover, .card.bg-ten:hover, .card.bg-eleven:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4) !important;
+          }
+          .db-widgets .db-icon {
+              background-color: rgba(255, 255, 255, 0.1) !important;
+              border-radius: 12px;
+              color: rgba(255, 255, 255, 0.9) !important;
+          }
+          .db-info h3 {
+              font-size: 2.2rem !important;
+              font-weight: 700 !important;
+              color: #F8FAFC !important;
+              margin-bottom: 5px;
+          }
+          .db-info h6 {
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              font-size: 0.75rem !important;
+              color: rgba(255, 255, 255, 0.6) !important;
+              margin-bottom: 0;
+          }
+          
+          /* Fix light spots */
+          .card-header, .card-footer {
+              background-color: rgba(0, 0, 0, 0.2) !important;
+              border-color: #1F2937 !important;
+          }
+          .view-link a {
+              color: #60A5FA !important;
+              font-weight: 500;
+          }
+          .view-link a:hover {
+              color: #93C5FD !important;
+              text-decoration: underline;
+          }
+          
+          /* Calendar Dark Mode Fixes */
+          .calendar-container, .simple-calendar {
+              background-color: #111827 !important;
+          }
+          .simple-calendar .day {
+              color: #9CA3AF !important;
+          }
+          .simple-calendar .day.wrong-month {
+              color: #4B5563 !important;
+          }
+          .simple-calendar .day.today {
+              background-color: #2563EB !important;
+              color: #FFF !important;
+          }
+          .simple-calendar header {
+              background-color: #1F2937 !important;
+              color: #F3F4F6 !important;
+          }
+          .simple-calendar header .month {
+              color: #F3F4F6 !important;
+          }
+      </style>
+   </head>
+   <body>
+      <div class="main-wrapper">
+         <div class="header">
+            <div class="header-left">
+               <a href="{% url 'dashboard' %}" class="logo">
+               <img src="{%static 'assets/img/logo.png' %}" alt="Logo">
+               </a>
+               <a href="{% url 'dashboard' %}" class="logo logo-small">
+               <img src="{%static 'assets/img/logo-small.png' %}" alt="Logo" width="30" height="30">
+               </a>
+            </div>
+            <a href="javascript:void(0);" id="toggle_btn">
+            <i class="fas fa-align-left"></i>
+            </a>
+            <div class="top-nav-search">
+               <form>
+                  <input type="text" class="form-control" placeholder="Search here">
+                  <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+               </form>
+            </div>
+            <a class="mobile_btn" id="mobile_btn">
+            <i class="fas fa-bars"></i>
+            </a>
+            <ul class="nav user-menu">
+               <li class="nav-item dropdown noti-dropdown">
+                  <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                   {% comment %} {% if unread_notification_count > 0 %}
+                  <i class="far fa-bell"></i> <span class="badge badge-pill">{{unread_notification_count}}</span>
+                  {% endif %} {% endcomment %}
+                  </a>
+                  <div class="dropdown-menu notifications">
+                     <div class="topnav-dropdown-header">
+                        <span class="notification-title">Notifications</span>
+                        <a href="javascript:void(0)" class="clear-noti"> Clear All </a>
+                     </div>
+                     <div class="noti-content">
+                        <ul class="notification-list">
+                           
+                        </ul>
+                     </div>
+                     <div class="topnav-dropdown-footer">
+                        <a href="#">View all Notifications</a>
+                     </div>
+                  </div>
+               </li>
+               <li class="nav-item dropdown has-arrow">
+                  <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                  <span class="user-img"><img class="rounded-circle" src="{%static 'assets/img/profiles/avatar-01.jpg'%}" width="31" alt="Ryan Taylor"></span>
+                  </a>
+                  <div class="dropdown-menu">
+                     <div class="user-header">
+                        <div class="avatar avatar-sm">
+                           <img src="{%static 'assets/img/profiles/avatar-01.jpg'%}" alt="User Image" class="avatar-img rounded-circle">
+                        </div>
+                        <div class="user-text">
+                           {% comment %} <h6>{{user.username}}</h6> {% endcomment %}
+                           <p class="text-muted mb-0">Administrator</p>
+                        </div>
+                     </div>
+                     <a class="dropdown-item" href="{% url 'dashboard' %}">My Profile</a>
+                     <a class="dropdown-item" href="#">Inbox</a>
+                     <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                  </div>
+               </li>
+            </ul>
+         </div>
+         <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+               <div id="sidebar-menu" class="sidebar-menu">
+                  <ul>
+                     <li class="menu-title">
+                        <span>Main Menu</span>
+                     </li>
+                     <li class="submenu active">
+                        <a href="#"><i class="fas fa-user-graduate"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
+                        <ul>
+                           <li><a href="{% url 'dashboard' %}" class="active">Admin Dashboard</a></li>
+                           <li><a href="{% url 'dashboard' %}">Teacher Dashboard</a></li>
+                           <li><a href="{% url 'dashboard' %}">Student Dashboard</a></li>
+                        </ul>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
+                        <ul>
+                           <li><a href="{% url 'student_list' %}">Student List</a></li>
+                           <li><a href="{% url 'add_student' %}">Student Add</a></li>
+                        </ul>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span> <span class="menu-arrow"></span></a>
+                        <ul>
+                           <li><a href="/admin/faculty/teacher/">Teacher List</a></li>
+                        </ul>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><i class="fas fa-building"></i> <span> Departments</span> <span class="menu-arrow"></span></a>
+                        <ul>
+                           <li><a href="/admin/faculty/department/">Departments Management</a></li>
+                        </ul>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><i class="fas fa-book-reader"></i> <span> Subjects</span> <span class="menu-arrow"></span></a>
+                        <ul>
+                           <li><a href="/admin/faculty/subject/">Subjects Management</a></li>
+                        </ul>
+                     </li>
+                     <li class="menu-title">
+                        <span>Management</span>
+                     </li>
+                     <li>
+                        <a href="/admin/faculty/holiday/"><i class="fas fa-holly-berry"></i> <span>Holiday / Events</span></a>
+                     </li>
+                     <li>
+                        <a href="/admin/faculty/timetable/"><i class="fas fa-table"></i> <span>Time Table</span></a>
+                     </li>
+                     <li>
+                        <a href="/admin/faculty/exam/"><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
+                     </li>
+
+                  </ul>
+               </div>
+            </div>
+         </div>
+
+
+         {% block body %}
+            
+         {% endblock %}
+
+      </div>
+
+ 
+
+    
+      <script type="text/javascript">
+          document.addEventListener('DOMContentLoaded', function() {
+              // Select the notification dropdown element
+              const notiDropdown = document.querySelector('.noti-dropdown');
+              const clearAllBtn = document.querySelector('.clear-noti');
+      
+              if (notiDropdown) {
+                  // Add a click event listener to the notification dropdown
+                  notiDropdown.addEventListener('click', function() {
+                      const url = "";
+      
+                      // Use the Fetch API to send a POST request to mark notifications as read
+                      fetch(url, {
+                          method: 'POST',
+                          headers: {
+                              'X-CSRFToken': '{{ csrf_token }}',
+                              'Content-Type': 'application/x-www-form-urlencoded',
+                          }
+                      })
+                      .then(response => response.json())  // Parse the JSON response
+                      .then(data => {
+                          if (data.status === 'success') {
+                              // Remove the badge if notifications are successfully marked as read
+                              const badge = document.querySelector('.badge');
+                              if (badge) {
+                                  badge.remove();
+                              }
+                          }
+                      })
+                      .catch(error => {
+                          console.error('Error:', error);  // Log any errors
+                      });
+                  });
+              }
+      
+              if (clearAllBtn) {
+                  // Add a click event listener to the "Clear All" button
+                  clearAllBtn.addEventListener('click', function() {
+                      const clearUrl = "";  // Ensure this URL points to the correct view
+      
+                      // Use Fetch to send a POST request to clear all notifications
+                      fetch(clearUrl, {
+                          method: 'POST',
+                          headers: {
+                              'X-CSRFToken': '{{ csrf_token }}',
+                              'Content-Type': 'application/x-www-form-urlencoded',
+                          }
+                      })
+                      .then(response => response.json())  // Parse the JSON response
+                      .then(data => {
+                          if (data.status === 'success') {
+                              // Clear all notifications from the dropdown
+                              const notificationList = document.querySelector('.notification-list');
+                              if (notificationList) {
+                                  notificationList.innerHTML = '<li>No new notifications</li>';  // Optionally show a "No new notifications" message
+                              }
+                          }
+                      })
+                      .catch(error => {
+                          console.error('Error:', error);  // Log any errors
+                      });
+                  });
+              }
+          });
+      </script>
+      
+      
+  </body>
+  </html>
+  
